@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:crm
+    build: ./Images/Postgresql
+    restart: always
+    environment: 
+      POSTGRES_PASSWORD: "secretworld"
+    ports:
+      - "5432:5432"
