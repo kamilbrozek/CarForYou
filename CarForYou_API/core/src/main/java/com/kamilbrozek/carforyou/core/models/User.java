@@ -8,15 +8,23 @@ import java.util.Date;
 public class User {
 
     @Id
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
+    @Column(name = "login",nullable = false, unique = true)
     private String login;
 
+    @Column(name = "password", nullable = false)
     private String password;
 
+    @Column(name = "isActive")
+    private boolean isActive;
+
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "registerDate")
     private Date registerDate;
 
     private Date lastLogin;
