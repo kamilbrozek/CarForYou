@@ -10,28 +10,30 @@ services:
     ports:
       - "5432:5432"
 
-#   flyway:
-#     image: flyway:rentcar
-#     container_name: flyway
-#     build: ./Images/Flyway
-#     command: -url=jdbc:postgresql://db:5432/rentcardev -user=postgresdev -password=secret -connectRetries=60 migrate
-#     depends_on:
-#       - db
+  # flyway:
+  #   image: flyway/flyway:latest
+  #   container_name: flyway
+  #   build: ./Images/Flyway
+  #   command: -url=jdbc:postgresql://172.30.222.82:5432/rcdev1 -user=rcuser -password=secretpassword -connectRetries=60 migrate
+  #   volumes: 
+  #   - ./data:/flyway/sql
+  #   depends_on:
+  #     - db
 
-#   pgadmin:
-#     image: dpage/pgadmin4:latest
-#     restart: always
-#     environment:
-#       PGADMIN_DEFAULT_EMAIL: user@mail.com
-#       PGADMIN_DEFAULT_PASSWORD: secret
-#       PGADMIN_LISTEN_PORT: 80
-#     ports:
-#     - "8080:80"
-#     volumes: 
-#       - pgadmin-data:/var/lib/pgadmin
-#     depends_on: 
-#       - db
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@mail.com
+      PGADMIN_DEFAULT_PASSWORD: secret
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+    - "8080:80"
+    volumes: 
+      - pgadmin-data:/var/lib/pgadmin
+    depends_on: 
+      - db
 
-# volumes: 
-#   pgadmin-data:
+volumes: 
+  pgadmin-data:
   

@@ -4,7 +4,6 @@ CREATE TABLE Users (
     password VARCHAR(50) NOT NULL,
     isActive boolean,
     email VARCHAR(100) NOT NULL,
-    phone VARCHAR(20),
     registerDate DATE,
     lastlogin DATE
 );
@@ -34,7 +33,7 @@ CREATE TABLE Cars (
   transmission VARCHAR(15),
   airConditioned VARCHAR(1),
   carStatus VARCHAR(1)
-)
+);
 
 CREATE TABLE Customers(
   customer_id INT NOT NULL PRIMARY KEY,
@@ -44,7 +43,7 @@ CREATE TABLE Customers(
   documentNumber VARCHAR(30),
   phone VARCHAR(20)
 
-)
+);
 
 CREATE TABLE Locations(
   location_id INT NOT NULL PRIMARY KEY,
@@ -54,7 +53,7 @@ CREATE TABLE Locations(
   street VARCHAR(50),
   buildingNumber VARCHAR(10),
   additionalInfo VARCHAR(100)
-)
+);
 
 CREATE TABLE Reservations(
   reservation_id INT NOT NULL PRIMARY KEY,
@@ -62,10 +61,10 @@ CREATE TABLE Reservations(
   driver INT NOT NULL,
   additionalDriver INT,
   createdBy INT NOT NULL,
-  startDate DATETIME,
+  startDate DATE,
   startLocation INT,
   startOdometer INT,
-  endDate DATETIME,
+  endDate DATE,
   endLocation INT,
   endOdometer INT,
   netPrice DECIMAL,
@@ -76,20 +75,9 @@ CREATE TABLE Reservations(
   FOREIGN KEY (createdBy) REFERENCES Users(user_id),
   FOREIGN KEY (startLocation) REFERENCES Locations(location_id),
   FOREIGN KEY (endLocation) REFERENCES Locations(location_id)
-)
+);
+
 
 CREATE TABLE Documents(
-  document_id INT NOT NULL PRIMARY KEY,
-)
-
-
-
-
-
-
--- Insert basic user and role
-
-INSERT INTO Users(login, password, isActive, email, registerDate)
-  VALUES ("ADMIN","Secret@123", true, "admin@admin.com", current_date())
-  WHERE NOT EXISTS (SELECT * FROM Users WHERE login ="ADMIN");
-
+  document_id INT NOT NULL PRIMARY KEY
+);

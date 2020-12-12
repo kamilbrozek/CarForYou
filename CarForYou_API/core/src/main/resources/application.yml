@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driverClassName : "org.hibernate.dialect.PostgreSQLDialect"
+    url: "jdbc:postgresql://172.24.204.116:5432/rcdev1"
+    username: "rcuser"
+    password: "secretpassword"

@@ -4,7 +4,6 @@ CREATE TABLE Users (
     password VARCHAR(50) NOT NULL,
     isActive boolean,
     email VARCHAR(100) NOT NULL,
-    phone VARCHAR(20),
     registerDate DATE,
     lastlogin DATE
 );
@@ -78,18 +77,8 @@ CREATE TABLE Reservations(
   FOREIGN KEY (endLocation) REFERENCES Locations(location_id)
 )
 
+
 CREATE TABLE Documents(
-  document_id INT NOT NULL PRIMARY KEY,
+  document_id INT NOT NULL PRIMARY KEY
 )
-
-
-
-
-
-
--- Insert basic user and role
-
-INSERT INTO Users(login, password, isActive, email, registerDate)
-  VALUES ("ADMIN","Secret@123", true, "admin@admin.com", current_date())
-  WHERE NOT EXISTS (SELECT * FROM Users WHERE login ="ADMIN");
 
