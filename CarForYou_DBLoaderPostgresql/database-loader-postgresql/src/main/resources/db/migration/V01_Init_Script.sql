@@ -5,14 +5,15 @@ CREATE TABLE Users (
     isActive boolean,
     email VARCHAR(100) NOT NULL,
     registerDate DATE,
-    lastlogin DATE
+    lastlogin DATE,
+    role INT,
+    FOREIGN KEY (role) REFERENCES Roles (role_id)
+
 );
 
 CREATE TABLE Roles (
   role_id INT NOT NULL PRIMARY KEY,
-  user_id INT NOT NULL,
-  roleName VARCHAR(50) NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES Users (user_id)
+  roleName VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Cars (

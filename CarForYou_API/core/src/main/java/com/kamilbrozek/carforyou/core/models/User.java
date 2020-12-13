@@ -1,7 +1,7 @@
 package com.kamilbrozek.carforyou.core.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Table(name ="Users")
@@ -10,12 +10,12 @@ public class User {
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
-    @Column(name = "login",nullable = false, unique = true)
+    @Column(name = "login")
     private String login;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password;
 
     @Column(name = "isActive")
@@ -27,17 +27,28 @@ public class User {
     @Column(name = "registerDate")
     private Date registerDate;
 
+    @Column(name = "lastLogin")
     private Date lastLogin;
 
-    public User() {
+    @Column(name = "role")
+    private Long role;
+
+
+//    virtual
+
+
+    public User(Long id) {
+
     }
 
-    public User(String login, String password, String email, Date registerDate, Date lastLogin) {
+    public User(String login, String password, boolean isActive, String email, Date registerDate, Date lastLogin, Long role) {
         this.login = login;
         this.password = password;
+        this.isActive = isActive;
         this.email = email;
         this.registerDate = registerDate;
         this.lastLogin = lastLogin;
+        this.role = role;
     }
 
     public String getLogin() {
@@ -54,6 +65,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public String getEmail() {
@@ -79,4 +98,13 @@ public class User {
     public void setLastLogin(Date lastLogin) {
         this.lastLogin = lastLogin;
     }
+
+    public Long getRole() {
+        return role;
+    }
+
+    public void setRole(Long role) {
+        this.role = role;
+    }
 }
+
