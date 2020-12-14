@@ -42,7 +42,8 @@ CREATE TABLE Customers(
   lastName VARCHAR(50),
   documentType VARCHAR(1),
   documentNumber VARCHAR(30),
-  phone VARCHAR(20)
+  phone VARCHAR(20),
+  additionalInfo VARCHAR(100)
 
 )
 
