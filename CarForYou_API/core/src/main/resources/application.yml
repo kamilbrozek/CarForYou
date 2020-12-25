@@ -1,6 +1,10 @@
 spring:
   datasource:
-    driverClassName : "org.hibernate.dialect.PostgreSQLDialect"
+    driverClassName : "org.postgresql.Driver"
     url: "jdbc:postgresql://172.24.204.116:5432/rcdev1"
     username: "rcuser"
     password: "secretpassword"
+  jpa:
+    properties:
+      hibernate:
+        dialect: "org.hibernate.dialect.PostgreSQLDialect"
